@@ -7,4 +7,6 @@ Route::controller(TaskController::class)->group(function () {
     Route::get('/', 'index')->name('task.index');
     Route::get('task/create', 'create')->name('task.create');
     Route::post('task/store', 'store')->name('task.store');
+    Route::get('task/edit/{task}', 'edit')->name('task.edit');
+    Route::put('task/update/{task}', 'update')->name('task.update');
 });
