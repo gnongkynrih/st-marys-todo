@@ -39,4 +39,32 @@ class TaskController extends Controller
         $task->save();
         return redirect()->route('task.index');
     }
+
+    public function updateCompeted(Task $task){
+        try{
+            // $task = Task::find($id); //select * from tasks where id = $id
+            // if(!$task){
+            //     return response()->json([
+            //         'status' => 'not found'
+            //     ],404);
+            // }
+            $task->completed = !$task->completed;
+            $task->save();
+            return response()->json([
+                'status' => 'updated'
+            ],200);
+        }catch(Exception $e){
+            return response()->json([
+                'status' => 'error'
+            ],500);
+        }
+    }
+    public function destroy(Task $task)
+    {
+        // $task = Task::find($id); //select * from task where id=$id
+        $task->delete();
+        return response()->json([
+                'status' => 'deleted'
+            ],200);
+    }
 }

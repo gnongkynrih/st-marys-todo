@@ -9,4 +9,6 @@ Route::controller(TaskController::class)->group(function () {
     Route::post('task/store', 'store')->name('task.store');
     Route::get('task/edit/{task}', 'edit')->name('task.edit');
     Route::put('task/update/{task}', 'update')->name('task.update');
+    Route::put('/task/{task}','updateCompeted')->name('task.updateCompleted');
+    Route::delete('/task/{task}','destroy')->name('task.destroy');
 });
