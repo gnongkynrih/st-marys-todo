@@ -1,33 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <div>
-    <h5><a href="{{ route('task.index') }}">Back</a></h5>
-    <form action="{{ route('task.store') }}" method="POST">
-      @csrf
-      <div>
-        <label for="">Task</label>
-        <input 
-        type="text" name="name" placeholder="Enter Task">
-        @error('name')
-          <div>{{ $message }}</div>
-        @enderror
+@extends('layouts.app')
+@section('content')
+  <div class="row justify-content-center">
+    <div class="card col-6">
+      <div class="card-body">
+        <form action="{{ route('task.store') }}" method="POST">
+          @csrf
+          <div class="mb-3">
+            <label class="form-label" for="">Task</label>
+            <input class="form-control" 
+            type="text" name="name" placeholder="Enter Task">
+            @error('name')
+              <div>{{ $message }}</div>
+            @enderror
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="">Date</label>
+            <input type="date" name="due_date" class="form-control"  >
+            @error('due_date')
+              <div>{{ $message }}</div>
+            @enderror
+          </div>
+          
+        </form>
       </div>
-      <div>
-        <label for="">Date</label>
-        <input type="date" name="due_date" >
-        @error('due_date')
-          <div>{{ $message }}</div>
-        @enderror
+      <div class="card-footer text-center">
+        <a class="btn btn-warning" href="{{ route('task.index') }}">Back</a>
+        
+            <button class="btn btn-primary" type="submit">Create</button>
       </div>
-      <button type="submit">Create</button>
-    </form>
+    </div>
   </div>
-</body>
-</html>
+@endsection

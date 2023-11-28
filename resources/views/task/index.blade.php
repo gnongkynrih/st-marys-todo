@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-</head>
-<body>
-  <h5>Task List</h5>
-  <a href="{{ route('task.create') }}">Create Task</a>
+@extends('layouts.app')
+@section('content')
+  <div class="row justify-content-center text-light">
+    <div class="col-6  bg-primary">
+      <h5>Task List</h5>
+  <a class="btn btn-warning" href="{{ route('task.create') }}">Create Task</a>
   <hr/>
-  <table>
+  <table class="table  table-striped table-hover table-bordered table-responsive">
     <thead>
       <tr><th>Task</th><th>Date</th><th>Completed</th>
       <th>Edit</th><th>Delete</th></tr>
@@ -19,15 +13,18 @@
     <tbody>
       @foreach ($tasks as $task)
         <tr id="R{{$task->id}}">
+          <td>
+            <div class="form-check">
+              @if($task->completed == true)
+                <input type="checkbox" class="chkComplete form-check-input" checked id="C{{ $task->id}}">
+              @else
+                <input type="checkbox" class="chkComplete  form-check-input"  id="C{{ $task->id}}">
+              @endif
+            </div>
+          </td>
           <td>{{ $task->name }}</td>
           <td>{{  date('d/m/Y', strtotime($task->due_date)) }}</td>
-          <td>
-            @if($task->completed == true)
-              <input type="checkbox" class="chkComplete" checked id="C{{ $task->id}}">
-            @else
-              <input type="checkbox" class="chkComplete"  id="C{{ $task->id}}">
-            @endif
-          </td>
+          
           <td><a href="{{ route('task.edit', $task->id) }}">Edit</a></td>
           <td>
             <a href="#" class="del" id="D{{$task->id}}">Delete</a></td>
@@ -36,6 +33,9 @@
       @endforeach
     </tbody>
   </table>
+    </div>
+  </div>
+
   <script>
     //get all the checkbox
     const checkboxes = document.querySelectorAll('.chkComplete');
@@ -70,5 +70,4 @@
       });
     });
   </script>
-</body>
-</html>
+@endsection
