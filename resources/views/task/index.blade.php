@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('content')
   <div class="row justify-content-center text-light">
-    <div class="col-6  bg-primary">
-      <h5>Task List</h5>
+    <div class="col-6 card">
+      <div class="card-body">
+        <h5>Task List</h5>
   <a class="btn btn-warning" href="{{ route('task.create') }}">Create Task</a>
   <hr/>
   <table class="table  table-striped table-hover table-bordered table-responsive">
@@ -33,6 +34,9 @@
       @endforeach
     </tbody>
   </table>
+  {!! $tasks->withQueryString()->links('pagination::bootstrap-5') !!}
+    
+      </div>
     </div>
   </div>
 

@@ -1,9 +1,10 @@
 @extends('layouts.app')
 @section('content')
+<form action="{{ route('task.store') }}" method="POST">
   <div class="row justify-content-center">
     <div class="card col-6">
       <div class="card-body">
-        <form action="{{ route('task.store') }}" method="POST">
+        
           @csrf
           <div class="mb-3">
             <label class="form-label" for="">Task</label>
@@ -21,7 +22,7 @@
             @enderror
           </div>
           
-        </form>
+       
       </div>
       <div class="card-footer text-center">
         <a class="btn btn-warning" href="{{ route('task.index') }}">Back</a>
@@ -30,4 +31,5 @@
       </div>
     </div>
   </div>
+</form>
 @endsection

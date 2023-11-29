@@ -1,0 +1,43 @@
+body {
+    background-color: #f0cbdd;
+}
+.bg-menu {
+    background-color: #1a1c54;
+}
+.navbar a {
+    color: #fdffff !important;
+}
+a.nav-link {
+    color: #fdffff !important;
+}
+.btn-primary {
+    background-color: #e492ae;
+    color: #1f1f1f;
+    border-color: #e492ae;
+}
+.btn-primary:hover {
+    background: #ed6b97;
+    border-color: #ed6b97;
+}
+.btn-warning {
+    background: #5b5958;
+    color: #fff;
+    border-color: #5b5958;
+}
+.card {
+    background-color: #dd5746;
+    color: #fff;
+}
+.active > .page-link {
+    color: #fff !important;
+}
+.page-link {
+    color: #dd5746 !important;
+    background-color: #1a1c54 !important;
+    border-radius: 50% !important;
+    margin-right: 10px;
+    border: none;
+}
+.text-muted {
+    color: #fff !important;
+}

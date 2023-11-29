@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateTaskRequest;
 use App\Models\Task;
+use Illuminate\Http\Request;
+use App\Http\Requests\CreateTaskRequest;
 
 class TaskController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = Task::all(); //select * from tasks
+        if($request->search){
+            //select * from task where name like "%string%"
+            $tasks = Task::where('name','like','%'.$request->search.'%')->paginate(2);
+        }else{
+            $tasks = Task::paginate(2); //select * from tasks
+        }
         return view('task.index', compact('tasks'));
     }
 
