@@ -4,7 +4,8 @@
     <div class="col-6 card">
       <div class="card-body">
         <h5>Task List</h5>
-  <a class="btn btn-warning" href="{{ route('task.create') }}">Create Task</a>
+  <a class="btn btn-warning" href="{{ route('task.create') }}">
+    <i class="fa-solid fa-floppy-disk"></i> New Task</a>
   <hr/>
   <table class="table  table-striped table-hover table-bordered table-responsive">
     <thead>
@@ -26,9 +27,13 @@
           <td>{{ $task->name }}</td>
           <td>{{  date('d/m/Y', strtotime($task->due_date)) }}</td>
           
-          <td><a href="{{ route('task.edit', $task->id) }}">Edit</a></td>
+          <td><a href="{{ route('task.edit', $task->id) }}">
+          <i class="fa-solid fa-pen-to-square pink"></i>
+          </a></td>
           <td>
-            <a href="#" class="del" id="D{{$task->id}}">Delete</a></td>
+            <a href="#" class="del" id="D{{$task->id}}">
+            <i class="fa-solid fa-trash text-danger"></i>
+          </a></td>
            
         </tr>
       @endforeach

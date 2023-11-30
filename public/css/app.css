@@ -1,8 +1,18 @@
 body {
     background-color: #f0cbdd;
 }
+.pink {
+    color: #7a73d6;
+}
 .bg-menu {
     background-color: #1a1c54;
+}
+.dropdown-menu {
+    background-color: #1a1c54;
+    color: #fff;
+}
+.dropdown-menu a:hover {
+    background-color: #dd5746;
 }
 .navbar a {
     color: #fdffff !important;
@@ -14,6 +24,9 @@ a.nav-link {
     background-color: #e492ae;
     color: #1f1f1f;
     border-color: #e492ae;
+}
+.btn:hover {
+    background-color: #e492ae;
 }
 .btn-primary:hover {
     background: #ed6b97;
