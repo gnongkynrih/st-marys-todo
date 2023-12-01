@@ -17,7 +17,8 @@
             <li><a class="dropdown-item" href="{{ route('task.index')}}">List Task</a></li>
           </ul>
         </li>
-      
+        <li>
+          <a class="nav-link" href="{{ route('task.report')}}">Task Report</a>
       </ul>
       <form class="d-flex" role="search" method="GET" action="{{route('task.index')}}">
         <div class="input-group">

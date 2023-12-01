@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateTaskRequest;
+use PDF;
 
 class TaskController extends Controller
 {
@@ -72,5 +73,20 @@ class TaskController extends Controller
         return response()->json([
                 'status' => 'deleted'
             ],200);
+    }
+
+    public function report(){
+        return view('reports.index');
+    }
+    public function export(Request $request){
+
+        //select & from task where completed = ''' and due_date between this and that
+        $tasks = Task::where('completed',$request->status)
+        ->whereDate('due_date','>=', $request->from)
+        ->whereDate('due_date','<=',$request->to)->get();
+
+        $pdf = PDF::loadView('reports.tasklist',compact('tasks'));
+        return $pdf->download('tasklist.pdf');
+        // return view('reports.tasklist',compact('tasks'));
     }
 }

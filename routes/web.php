@@ -15,4 +15,6 @@ Route::controller(TaskController::class)->group(function () {
     Route::put('task/update/{task}', 'update')->name('task.update');
     Route::put('/task/{task}','updateCompeted')->name('task.updateCompleted');
     Route::delete('/task/{task}','destroy')->name('task.destroy');
+    Route::get('/task/export','export')->name('task.export');
+    Route::get('/report','report')->name('task.report');
 });
